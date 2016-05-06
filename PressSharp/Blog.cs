@@ -94,8 +94,9 @@ namespace PressSharp
             var authorIdElement = authorElement.Element(WordpressNamespace + "author_id");
             var authorUsernameElement = authorElement.Element(WordpressNamespace + "author_login");
             var authorEmailElement = authorElement.Element(WordpressNamespace + "author_email");
+            var authorDisplayNameElement = authorElement.Element(WordpressNamespace + "author_display_name");
 
-            if (authorIdElement == null || authorUsernameElement == null || authorEmailElement == null)
+            if (authorIdElement == null || authorUsernameElement == null || authorEmailElement == null || authorDisplayNameElement == null)
             {
                 throw new XmlException("Unable to parse malformed author.");
             }
@@ -104,7 +105,8 @@ namespace PressSharp
             {
                 Id = authorIdElement.Value,
                 Username = authorUsernameElement.Value,
-                Email = authorEmailElement.Value
+                Email = authorEmailElement.Value,
+                DisplayName = authorDisplayNameElement.Value
             };
 
             return author;
